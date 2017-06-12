@@ -10,7 +10,7 @@
 
 # Do not edit this in any case!
 options:
-	version: dev   
+	version: 1.0   
 # Do not edit this in any case!
 
 #-------------------- CODE BELOW THIS LINE - DONT EDIT THAT --------------------#
@@ -25,7 +25,7 @@ on join:
       message "&6Checking for updates..." to player
       if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
         wait 40 ticks
-        message "&c&l? &cYou have outdated version of &6ReportSys&c! You can update it from: " to player
+        message "&c&lX &cYou have outdated version of &6ReportSys&c! You can update it from: " to player
       else:
         wait 40 ticks
         message "&2&l? &aYou have latest version of &6ReportSys&a!" to player       
@@ -33,7 +33,7 @@ on join:
       message "&6Kontroluji aktualizace..." to player
       if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
         wait 40 ticks
-        message "&c&l? &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: " to player
+        message "&c&lX &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: " to player
       else:
         wait 40 ticks
         message "&2&l? &aMate nejnovejsi verzi &6ReportSys&a!" to player         
@@ -41,7 +41,7 @@ on join:
       message "&6Kontroluju sa aktualizacie..." to player
       if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
         wait 40 ticks
-        message "&c&l? &cMate zastaralu verziu &6ReportSys&c! Mozete ju aktualizovat z: " to player
+        message "&c&lX &cMate zastaralu verziu &6ReportSys&c! Mozete ju aktualizovat z: " to player
       else:
         wait 40 ticks
         message "&2&l? &aMate najnovsiu verziu &6ReportSys&a!" to player
