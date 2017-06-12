@@ -106,7 +106,7 @@ command /report <offline player> <text>:
                 loop-player has permission "reportsys.notify"
                 message "&6Player %sender% reported &8(&7%{playerr}%&8) &6for &8(&7%{reason1}%&8)&6." to loop-player 
               set {reportsys.cooldown.%player%} to true
-              wait 15 minutes
+              wait 18000 ticks
               set {reportsys.cooldown.%player%} to false    
             if {enlocale} is 0:
               log "Hrac %sender% nahlasil hrace %{playerr}% za %{reason1}%" to file "reportsys/report.log"
@@ -115,7 +115,7 @@ command /report <offline player> <text>:
                 loop-player has permission "reportsys.notify"
                 message "&6Hrac %sender% nahlasil hrace &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6." to loop-player
               set {reportsys.cooldown.%player%} to true
-              wait 15 minutes
+              wait 18000 ticks
               set {reportsys.cooldown.%player%} to false   
             if {enlocale} is 2:
               log "Hrac %sender% nahlasil %{playerr}% za %{reason1}%" to file "reportsys/report.log"
@@ -124,7 +124,7 @@ command /report <offline player> <text>:
                 loop-player has permission "reportsys.notify"
                 message "&6Hrac %sender% nahlasil hrace &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6." to loop-player
               set {reportsys.cooldown.%player%} to true
-              wait 15 minutes
+              wait 18000 ticks
               set {reportsys.cooldown.%player%} to false
       else:
         if {enlocale} is 1:
@@ -141,3 +141,46 @@ command /report <offline player> <text>:
       if {enlocale} is 0:
         message "&cNemas prava!" to player     
       
+command /reportban <offline-player>:
+  usage: /reportban <player>
+  trigger:
+    set {playerbanned} to arg 1
+    if player has permission "reportsys.reportban":
+      if {playerbanned} exists:
+        if {playerbanned} is offline:
+          if {playerbanned} is {baniky::*}
+            if {enlocale} is 1:
+              message "&6Player is banned" 
+            if {enlocale} is 1:
+              message "&6Hrac je jiz zabanovan" 
+            if {enlocale} is 1:
+              message "&6Hrac je jiz zabanovan"             
+          add "%arg 1%" to {baniky::*}
+            if {enlocale} is 1:
+              message "&6Player &8%{playerbanned}&6 added to report banlist." 
+            if {enlocale} is 1:
+              message "&6Hrac &8%{playerbanned}&6 byl pridan na report banlist." 
+            if {enlocale} is 1:
+              message "&6Hrac &8%{playerbanned}&6 byl pridan na report banlist." 
+        else:
+          add "%arg 1%" to {baniky::*}
+            if {enlocale} is 1:
+              message "&6Player &8%{playerbanned}&6 added to report banlist." 
+            if {enlocale} is 1:
+              message "&6Hrac &8%{playerbanned}&6 byl pridan na report banlist." 
+            if {enlocale} is 1:
+              message "&6Hrac &8%{playerbanned}&6 byl pridan na report banlist." 
+      else:
+        if {enlocale} is 1:
+          message "&cThis player does not exist." 
+        if {enlocale} is 0:
+          message "&cTento hrac neexistuje." 
+        if {enlocale} is 2:
+          message "&cTento hrac neexistuje."         
+    else:
+      if {enlocale} is 1:
+        message "&cYou dont have permission to do that!" to player
+      if {enlocale} is 2:
+        message "&cNemas prava!" to player
+      if {enlocale} is 0:
+        message "&cNemas prava!" to player         
