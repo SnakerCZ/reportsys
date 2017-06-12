@@ -1,10 +1,10 @@
-##########################
-#                        #
-#        ReportSys       #
-#       by snakercz_     #
-#    (c) 2017 snakercz_  #
-#                        #
-##########################
+#------------------------
+#                        
+#        ReportSys       
+#       by snakercz_     
+#    (c) 2017 snakercz_  
+#                        
+#------------------------
 
 #Check ?, cross ?
 
@@ -13,9 +13,10 @@ options:
 	version: dev   
 # Do not edit this in any case!
 
-######################### CODE BELOW THIS LINE - DONT EDIT THAT #########################
+#-------------------- CODE BELOW THIS LINE - DONT EDIT THAT --------------------#
 
-set enlocale to 1
+variables:
+  {enlocale} = 1
 
 on join:
   if player has permission "reportsys.update":
@@ -45,37 +46,37 @@ on join:
         wait 40 ticks
         message "&2&l? &aMate najnovsiu verziu &6ReportSys&a!" to player
   
-command /reportsys-setlocale:
+command /reportsys-setlocale <text>:
   trigger:
     if player has permission "reportsys.locale":
-      if var 1 is set:
-        if var 1 is cz:
-          set enlocale to 0
+      if arg 1 is set:
+        if "arg 1" is "cz":
+          set {enlocale} to 0
           message "&aJazyk &6ReportSys&a nastaven na &4cestina&a." to player
         else:
-          if enlocale is 1:
+          if {enlocale} is 1:
             message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 2:
+          if {enlocale} is 2:
             message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 0:
+          if {enlocale} is 0:
             message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
-        if var 1 is en:
-          set enlocale to 1
+        if "arg 1" is "en":
+          set {enlocale} to 1
           message "&aLanguage of &6ReportSys&a was set to &1english&a." to player
         else:
-          if enlocale is 1:
+          if {enlocale} is 1:
             message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 2:
+          if {enlocale} is 2:
             message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 0:
+          if {enlocale} is 0:
             message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
-        if var 1 is sk:
-          set enlocale to 2
+        if "arg 1" is "sk":
+          set {enlocale} to 2
           message "&aJazyk &6ReportSys&a nastaven na &cslovencina&a." to player
         else:
-          if enlocale is 1:
+          if {enlocale} is 1:
             message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 2:
+          if {enlocale} is 2:
             message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
-          if enlocale is 0:
+          if {enlocale} is 0:
             message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
