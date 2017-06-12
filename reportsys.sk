@@ -23,60 +23,55 @@ on join:
     wait 1 second
     if {enlocale} is 1:
       message "&6Checking for updates..." to player
-      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
+      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is not "{@version}":
         wait 40 ticks
-        message "&c&lX &cYou have outdated version of &6ReportSys&c! You can update it from: " to player
+        message "&4&l? &cYou have outdated version of &6ReportSys&c! You can update it from: " to player
       else:
         wait 40 ticks
         message "&2&l? &aYou have latest version of &6ReportSys&a!" to player       
     if {enlocale} is 0:
       message "&6Kontroluji aktualizace..." to player
-      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
+      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is not "{@version}":
         wait 40 ticks
-        message "&c&lX &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: " to player
+        message "&4&l? &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: " to player
       else:
         wait 40 ticks
         message "&2&l? &aMate nejnovejsi verzi &6ReportSys&a!" to player         
     if {enlocale} is 2:
       message "&6Kontroluju sa aktualizacie..." to player
-      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
+      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is not "{@version}":
         wait 40 ticks
-        message "&c&lX &cMate zastaralu verziu &6ReportSys&c! Mozete ju aktualizovat z: " to player
+        message "&4&l? &cMate zastaralu verziu &6ReportSys&c! Mozete ju aktualizovat z: " to player
       else:
         wait 40 ticks
         message "&2&l? &aMate najnovsiu verziu &6ReportSys&a!" to player
   
 command /reportsys-setlocale <text>:
+  usage: /reportsys-stelocale <&1en&6/&4cz&6/&csk&f>
   trigger:
     if player has permission "reportsys.locale":
       if arg 1 is set:
-        if "arg 1" is "cz":
-          set {enlocale} to 0
-          message "&aJazyk &6ReportSys&a nastaven na &4cestina&a." to player
+        if argument-text is "cz" or "en" or "sk":
+          if argument-text is "cz":
+            set {enlocale} to 0
+            message "&aJazyk &6ReportSys&a nastaven na &4cestina&a." to player
+          if argument-text is "en":
+            set {enlocale} to 1
+            message "&aLanguage of &6ReportSys&a was set to &1english&a." to player
+          if argument-text is "sk":
+            set {enlocale} to 2
+            message "&aJazyk &6ReportSys&a nastaven na &cslovencina&a." to player
         else:
           if {enlocale} is 1:
             message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
-          if {enlocale} is 2:
-            message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
           if {enlocale} is 0:
-            message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
-        if "arg 1" is "en":
-          set {enlocale} to 1
-          message "&aLanguage of &6ReportSys&a was set to &1english&a." to player
-        else:
-          if {enlocale} is 1:
-            message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
-          if {enlocale} is 2:
             message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
-          if {enlocale} is 0:
-            message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
-        if "arg 1" is "sk":
-          set {enlocale} to 2
-          message "&aJazyk &6ReportSys&a nastaven na &cslovencina&a." to player
-        else:
-          if {enlocale} is 1:
-            message "&6Unknown value! Only possible values is: &1en&6/&4cz&6/&csk" to player
           if {enlocale} is 2:
-            message "&6Neznama hodnota! Jedine mozne hodnoty jsou: &1en&6/&4cz&6/&csk" to player
-          if {enlocale} is 0:
             message "&6Neznama hodnota! Jedine mozne hodnoty su: &1en&6/&4cz&6/&csk" to player
+      else:
+        if {enlocale} is 1:
+          message "&6Language argument missing!" to player
+        if {enlocale} is 2:
+          message "&6Chybi argument jazyka!" to player
+        if {enlocale} is 0:
+          message "&6Chyba argument jazyka!" to player
