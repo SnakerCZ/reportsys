@@ -75,3 +75,69 @@ command /reportsys-setlocale <text>:
           message "&6Chybi argument jazyka!" to player
         if {enlocale} is 0:
           message "&6Chyba argument jazyka!" to player
+    else:
+      if {enlocale} is 1:
+        message "&cYou dont have permission to do that!" to player
+      if {enlocale} is 2:
+        message "&cNemas prava!" to player
+      if {enlocale} is 0:
+        message "&cNemas prava!" to player
+          
+command /report <offline player> <text>:
+  usage: /report <player> <reason>
+  trigger:
+    set {playerr} to arg 1
+    set {reason1} to argument-text
+    if player has permission "reportsys.report":
+      if {playerr} is online:
+        if {reportsys.cooldown.%player%} is true:
+          if {enlocale} is 1:
+            message "&cYou must wait 15 minutes before next report!"
+          if {enlocale} is 0:
+            message "&cMusis pockat 15 minut pred dalsim nahlasenim!"
+          if {enlocale} is 2:
+            message "&cMusis pockat 15 minut pred dalsim nahlasenim!"  
+        else:
+          if {playerr} and {reason1} is set:
+            if {enlocale} is 1:
+              log "Player %sender% reported %{playerr}% for %{reason1}%" to file "reportsys/report.log"
+              message "&6You reported player &8(&7%{playerr}%&8) &6for &8(&7%{reason1}%&8)&6. Player will be checked by admins."
+              loop all players:
+                loop-player has permission "reportsys.notify"
+                message "&6Player %sender% reported &8(&7%{playerr}%&8) &6for &8(&7%{reason1}%&8)&6." to loop-player 
+              set {reportsys.cooldown.%player%} to true
+              wait 15 minutes
+              set {reportsys.cooldown.%player%} to false    
+            if {enlocale} is 0:
+              log "Hrac %sender% nahlasil hrace %{playerr}% za %{reason1}%" to file "reportsys/report.log"
+              message "&6Nahlasil jsi hrace &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6. Hrac bude co nejdrive proveren adminy."
+              loop all players:
+                loop-player has permission "reportsys.notify"
+                message "&6Hrac %sender% nahlasil hrace &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6." to loop-player
+              set {reportsys.cooldown.%player%} to true
+              wait 15 minutes
+              set {reportsys.cooldown.%player%} to false   
+            if {enlocale} is 2:
+              log "Hrac %sender% nahlasil %{playerr}% za %{reason1}%" to file "reportsys/report.log"
+              message "&6Nahlasil si hraca &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6. Hrac bude co najskor prevereny administratormi"
+              loop all players:
+                loop-player has permission "reportsys.notify"
+                message "&6Hrac %sender% nahlasil hrace &8(&7%{playerr}%&8) &6za &8(&7%{reason1}%&8)&6." to loop-player
+              set {reportsys.cooldown.%player%} to true
+              wait 15 minutes
+              set {reportsys.cooldown.%player%} to false
+      else:
+        if {enlocale} is 1:
+          message "&cPlayer must be online!" to player
+        if {enlocale} is 2:
+          message "&cHrac musi byt online!" to player
+        if {enlocale} is 0:
+          message "&cHrac musi byt online!" to player 
+    else:
+      if {enlocale} is 1:
+        message "&cYou dont have permission to do that!" to player
+      if {enlocale} is 2:
+        message "&cNemas prava!" to player
+      if {enlocale} is 0:
+        message "&cNemas prava!" to player     
+      
