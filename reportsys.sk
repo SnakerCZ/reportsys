@@ -25,10 +25,22 @@ on join:
       if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
         wait 40 ticks
         message "&c&l? &cYou have outdated version of &6ReportSys&c! You can update it from: "
+      else:
+        wait 40 ticks
+        message "&2&l? &aYou have latest version of &6ReportSys&a!"       
     if {enlocale} is 0:
       message "&6Kontroluji aktualizace..."
       if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
         wait 40 ticks
         message "&c&l? &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: "
-      
-  
+      else:
+        wait 40 ticks
+        message "&2&l? &aMate nejnovejsi verzi &6ReportSys&a!"         
+    if {enlocale} is 2:
+      message "&6Kontroluji aktualizace..."
+      if text from "https://raw.githubusercontent.com/SnakerCZ/reportsys/master/version.md" is "{@version}":
+        wait 40 ticks
+        message "&c&l? &cMate zastaralou verzi &6ReportSys&c! Aktualizujte ji z: "
+      else:
+        wait 40 ticks
+        message "&2&l? &aYou have latest version of &6ReportSys&a!"      
